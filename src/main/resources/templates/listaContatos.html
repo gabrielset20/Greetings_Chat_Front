@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista de Contatos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #8e44ad; /* Roxo */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 2px solid #e67e22; /* Laranja */
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #8e44ad; /* Roxo mais escuro */
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .align-middle {
+            vertical-align: middle;
+        }
+
+        .empty-message {
+            color: #d9534f;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Lista de Contatos</h2>
+    <div th:unless="${#lists.isEmpty(contatos)}">
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Endereço</th>
+            </tr>
+            <tr th:each="contato : ${contatos}" class="align-middle">
+                <td th:text="${contato.nome}"></td>
+                <td th:text="${contato.email}"></td>
+                <td th:text="${contato.telefone}"></td>
+                <td th:text="${contato.endereco}"></td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${#lists.isEmpty(contatos)}" class="empty-message">
+        Nenhum contato disponível.
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Inserir Contato</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #8e44ad; /* Roxo */
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 2px solid #e67e22; /* Laranja */
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        span {
+            color: #e74c3c; /* Vermelho */
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #8e44ad; /* Azul */
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9; /* Azul mais escuro */
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" th:action="@{/inserircontato}" th:object="${contato}" method="post">
+        <label for="nome">Nome</label>
+        <input type="text" th:field="*{nome}" id="nome" placeholder="Nome">
+
+        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+
+        <label for="email">E-Mail</label>
+        <input type="text" th:field="*{email}" id="email" placeholder="E-Mail">
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+        <label for="telefone">Telefone</label>
+        <input type="text" th:field="*{telefone}" id="telefone" placeholder="Telefone">
+        <span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></span>
+
+        <label for="endereco">Endereço</label>
+        <input type="text" th:field="*{endereco}" id="endereco" placeholder="Endereço">
+        <span th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></span>
+
+        <label for="bairro">Bairro</label>
+        <input type="text" th:field="*{bairro}" id="bairro" placeholder="Bairro">
+        <span th:if="${#fields.hasErrors('bairro')}" th:errors="*{bairro}"></span>
+
+        <label for="cidade">Cidade</label>
+        <input type="text" th:field="*{cidade}" id="cidade" placeholder="Cidade">
+        <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
+
+        <label for="estado">Estado</label>
+        <input type="text" th:field="*{estado}" id="estado" placeholder="Estado">
+        <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></span>
+
+        <input type="submit" value="Inserir Contato">
+    </form>
+</body>
+
+</html>
